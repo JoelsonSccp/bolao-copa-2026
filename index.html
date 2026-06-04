@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bolão da Copa 2026 — Biancade Engenharia. Cadastre-se, acompanhe participantes e veja os resultados em tempo real.">
+  <title>Bolão da Copa 2026 | Biancade Engenharia</title>
+</head>
+<body>
+
+  <!-- Link de salto visível apenas no foco do teclado (WCAG 2.4.1 — Bypass Blocks) -->
+  <a href="#conteudo-principal" class="skip-link">Pular para o conteúdo principal</a>
+
+  <!-- ===== CABEÇALHO ===== -->
+  <header>
+    <h1>🇧🇷 Bolão da Copa 2026 | Biancade Engenharia</h1>
+    <div class="header-acoes">
+      <a href="https://prodefy.co/app/group/dd0d19f3-b37d-4d1d-b9f6-856e514bbcb6"
+         target="_blank"
+         rel="noopener noreferrer">
+        Ir para ProdeFy
+      </a>
+    </div>
+  </header>
+
+  <main id="conteudo-principal" tabindex="-1">
+
+    <!-- ===== PAINEL INFORMATIVO ===== -->
+    <section id="painel-informativo" aria-label="Painel informativo do bolão">
+      <h2>Informações do Bolão</h2>
+
+      <div class="painel-grid">
+        <div class="painel-card">
+          <span aria-hidden="true">📊</span>
+          <p class="painel-label">Total de Jogos</p>
+          <p class="painel-valor" id="total-jogos">—</p>
+        </div>
+
+        <div class="painel-card">
+          <span aria-hidden="true">💰</span>
+          <p class="painel-label">Valor do Bolão</p>
+          <p class="painel-valor" id="valor-bolao">—</p>
+        </div>
+
+        <div class="painel-card">
+          <span aria-hidden="true">⚽</span>
+          <p class="painel-label">Valor por Aposta</p>
+          <p class="painel-valor" id="valor-por-jogo">—</p>
+        </div>
+
+        <div class="painel-card">
+          <span aria-hidden="true">📈</span>
+          <p class="painel-label">Total Arrecadado (estimado)</p>
+          <p class="painel-valor" id="total-arrecadado">—</p>
+        </div>
+      </div>
+
+      <!-- Estimativa de premiação -->
+      <div id="estimativa-premiacao" aria-label="Estimativa de premiação">
+        <h3>Premiação Estimada</h3>
+        <ul>
+          <li>🥇 1º lugar: <span id="premio-primeiro">—</span></li>
+          <li>🥈 2º lugar: <span id="premio-segundo">—</span></li>
+          <li>🥉 3º lugar: <span id="premio-terceiro">—</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===== CARTÕES DE REGRAS ===== -->
+    <section id="cartoes-regras" aria-label="Regras do bolão">
+      <h2>Regras do Bolão</h2>
+
+      <div class="cartoes-grid">
+
+        <article class="cartao-regra" id="cartao-regra-geral">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-regra-geral">
+            <span aria-hidden="true">📋</span>
+            <span class="cartao-titulo">Regras Gerais</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-regra-geral" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-pontuacao-campo">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-pontuacao-campo">
+            <span aria-hidden="true">🏆</span>
+            <span class="cartao-titulo">Pontuação — Resultado em Campo</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-pontuacao-campo" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-empates">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-empates">
+            <span aria-hidden="true">🤝</span>
+            <span class="cartao-titulo">Pontuação — Empates</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-empates" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-penaltis">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-penaltis">
+            <span aria-hidden="true">⚽</span>
+            <span class="cartao-titulo">Pontuação — Pênaltis</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-penaltis" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-premiacao">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-premiacao">
+            <span aria-hidden="true">💰</span>
+            <span class="cartao-titulo">Premiação</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-premiacao" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-como-participar">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-como-participar">
+            <span aria-hidden="true">🎯</span>
+            <span class="cartao-titulo">Como Participar</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-como-participar" hidden></div>
+        </article>
+
+        <article class="cartao-regra" id="cartao-prazos">
+          <button class="cartao-header" aria-expanded="false" aria-controls="conteudo-prazos">
+            <span aria-hidden="true">📅</span>
+            <span class="cartao-titulo">Prazos e Pagamento</span>
+            <span class="cartao-seta" aria-hidden="true">▼</span>
+          </button>
+          <div class="cartao-conteudo" id="conteudo-prazos" hidden></div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ===== FORMULÁRIO DE PARTICIPAÇÃO ===== -->
+    <section id="formulario-participacao" aria-label="Formulário de participação">
+      <h2>Participar do Bolão</h2>
+
+      <p>Valor da participação: <strong id="valor-participacao">R$ 100,00</strong></p>
+      <p>Você terá direito a apostar em todos os <strong id="total-jogos-form">104</strong> jogos da Copa.</p>
+
+      <form id="form-inscricao" novalidate>
+        <label for="input-nome">Seu nome completo</label>
+        <input
+          type="text"
+          id="input-nome"
+          name="nome"
+          placeholder="Digite seu nome..."
+          autocomplete="name"
+          minlength="3"
+          maxlength="50"
+          aria-describedby="feedback-nome"
+          required
+        >
+        <p id="feedback-nome" role="alert" aria-live="polite"></p>
+
+        <button type="submit" id="btn-confirmar" disabled>
+          Confirmar Participação
+        </button>
+      </form>
+
+      <!-- Toast de sucesso/erro, oculto por padrão -->
+      <div id="toast-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+    </section>
+
+    <!-- ===== LISTA DE PARTICIPANTES ===== -->
+    <section id="lista-participantes" aria-label="Lista de participantes">
+      <h2>Participantes</h2>
+
+      <!-- Painel de estatísticas -->
+      <div id="painel-estatisticas" aria-label="Estatísticas do bolão">
+        <div class="stat-card">
+          <span aria-hidden="true">👥</span>
+          <p class="stat-label">Cadastrados</p>
+          <p class="stat-valor" id="stat-total-cadastrados">0</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">✅</span>
+          <p class="stat-label">Pagamentos Confirmados</p>
+          <p class="stat-valor" id="stat-total-confirmados">0</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">💵</span>
+          <p class="stat-label">Total Arrecadado (est.)</p>
+          <p class="stat-valor" id="stat-arrecadado">R$ 0,00</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">🎯</span>
+          <p class="stat-label">Total de Apostas (est.)</p>
+          <p class="stat-valor" id="stat-apostas">0</p>
+        </div>
+      </div>
+
+      <!-- Botão exportar CSV -->
+      <button id="btn-exportar-csv" type="button">
+        Exportar CSV
+      </button>
+
+      <!-- Lista de participantes renderizada por JS -->
+      <ul id="lista-participantes-items" aria-label="Lista de participantes inscritos">
+        <!-- Itens gerados por script.js -->
+      </ul>
+
+      <!-- Estado vazio — hidden no HTML, JS remove/adiciona conforme a lista -->
+      <p id="lista-vazia" role="status" hidden>
+        Nenhum participante cadastrado ainda. Seja o primeiro!
+      </p>
+    </section>
+
+    <!-- ===== RESULTADOS AO VIVO ===== -->
+    <section id="resultados-vivo" aria-label="Resultados em tempo real">
+      <h2>Resultados em Tempo Real</h2>
+      <p>Acompanhe todos os resultados dos jogos da Copa 2026 ao vivo — placar, estatísticas e classificação atualizados em tempo real.</p>
+      <a href="https://ge.globo.com/futebol/copa-do-mundo/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-resultados"
+         aria-label="Ver resultados ao vivo no GE Globo (abre em nova aba)">
+        Ver Resultados ao Vivo →
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer>
+    <p>Desenvolvido para Bolão da Copa 2026 | Biancade Engenharia — 2026</p>
+    <button id="btn-area-admin" type="button">
+      Área do Organizador
+    </button>
+
+    <!-- Painel do admin, oculto por padrão -->
+    <div id="painel-admin" hidden aria-label="Painel administrativo">
+      <h2>Área do Organizador</h2>
+      <!-- Conteúdo do admin renderizado por script.js após autenticação -->
+    </div>
+  </footer>
+
+  <style>
+    /* Fundo da página — azul Brasil profundo */
+    html {
+      background-color: #03045e;
+      min-height: 100%;
+    }
+
+    /* =====================================================
+       VARIÁVEIS — Tema Dark único, paleta Brasil
+       Verde: #007f5f → #ffff3f   /   Azul: #03045e → #caf0f8
+       ===================================================== */
+    :root {
+      --cor-primaria:    #55a630;          /* bright-fern — botões e bordas */
+      --cor-secundaria:  #aacc00;          /* yellow-green — destaque e valores */
+      --cor-terciaria:   #007f5f;          /* jungle-teal — variante mais escura */
+
+      --cor-bg-secao:    rgba(252, 239, 180, 0.95);   /* amarelo Brasil ≈ #FCEFB4 — seções */
+      --cor-bg-card:     rgba(255, 255, 255, 0.68);  /* branco — cards sobre amarelo */
+
+      --cor-texto:       #caf0f8;          /* light-cyan — texto no header/footer/dark */
+      --cor-texto-light: #90e0ef;          /* frosted-blue — texto secundário dark */
+      --cor-texto-card:  #03045e;          /* navy — texto em cards sobre amarelo */
+
+      --cor-border:      rgba(85, 166, 48, 0.40);   /* bright-fern transparente */
+      --cor-sombra:      rgba(3, 4, 94, 0.70);
+
+      --cor-sucesso:     #55a630;
+      --cor-erro:        #f44336;
+
+      --radius:          10px;
+      --sombra:          0 2px 12px var(--cor-sombra);
+      --transicao:       0.3s ease;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 0;
+      background: var(--cor-terciaria);
+      color: #ffffff;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      font-size: 0.95rem;
+      z-index: 9999;
+      border-radius: 0 0 var(--radius) 0;
+      transition: top 0.2s ease;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      top: 0;
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Base */
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--cor-texto);
+      background-color: transparent;
+      transition: color var(--transicao);
+    }
+
+    h1 { font-size: clamp(1.4rem, 4vw, 2rem); }
+    h2 { font-size: 1.4rem; margin-bottom: 1rem; color: var(--cor-texto); }
+    h3 { font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--cor-texto); }
+
+    a {
+      color: #48cae4;
+      text-decoration: none;
+      transition: opacity var(--transicao);
+    }
+
+    ul { list-style: none; }
+
+    /* =====================================================
+       CABEÇALHO — gradiente azul profundo → verde Brasil
+       ===================================================== */
+    header {
+      background: linear-gradient(135deg, #03045e 0%, #007f5f 100%);
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      min-height: 80px;
+      box-shadow: 0 4px 16px rgba(3, 4, 94, 0.80);
+    }
+
+    header h1 {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      flex: 1;
+      color: #ffffff;
+    }
+
+    .header-acoes {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* Botão ProdeFy — amarelo-verde vibrante */
+    header a {
+      background-color: var(--cor-secundaria);
+      color: #1a1a00;
+      font-weight: 700;
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius);
+      transition: opacity var(--transicao), transform var(--transicao);
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    header a:hover,
+    header a:focus {
+      opacity: 0.85;
+      transform: translateY(-1px);
+      outline: 3px solid #ffffff;
+      outline-offset: 2px;
+    }
+
+    /* =====================================================
+       LAYOUT PRINCIPAL
+       ===================================================== */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3rem;
+    }
+
+    section {
+      background: var(--cor-bg-secao);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--sombra);
+      color: #03045e;
+      transition: background var(--transicao), box-shadow var(--transicao);
+    }
+
+    section h2 { color: #03045e; }
+    section h3 { color: #03045e; }
+    section a:not(.btn-resultados):not(.btn-prodefy-cartao) { color: #0077b6; }
+
+    /* =====================================================
+       PAINEL INFORMATIVO
+       ===================================================== */
+    #painel-informativo {
+      border-left: 4px solid #007f5f;
+    }
+
+    .painel-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .painel-card {
+      background: var(--cor-bg-card);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.55);
+      border: 2px solid var(--cor-primaria);
+      transition: transform var(--transicao), box-shadow var(--transicao);
+    }
+
+    .painel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(3, 4, 94, 0.70);
+    }
+
+    .painel-card span {
+      font-size: 2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .painel-label {
+      font-size: 0.8rem;
+      color: rgba(2, 62, 138, 0.80);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .painel-valor {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007f5f;
+    }
+
+    #estimativa-premiacao {
+      margin-top: 1.5rem;
+      padding: 1.5rem;
+      background: var(--cor-bg-card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.20);
+      border: 2px solid var(--cor-primaria);
+    }
+
+    #estimativa-premiacao ul {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    #estimativa-premiacao li {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #03045e;
+    }
+
+    /* =====================================================
+       CARTÕES DE REGRAS — accordion
+       ===================================================== */
+    .cartoes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.2rem;
+    }
+
+    .cartao-regra {
+      border: 2px solid var(--cor-primaria);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform var(--transicao), box-shadow var(--transicao);
+      background: var(--cor-bg-card);
+      box-shadow: 0 2px 10px rgba(3, 4, 94, 0.45);
+    }
+
+    .cartao-regra:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(3, 4, 94, 0.65);
+    }
+
+    .cartao-header {
+      width: 100%;
+      background: var(--cor-terciaria);
+      color: #ffffff;
+      border: none;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: background var(--transicao);
+    }
+
+    .cartao-header:hover,
+    .cartao-header:focus {
+      background: var(--cor-primaria);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: -3px;
+    }
+
+    .cartao-titulo { flex: 1; }
+
+    .cartao-seta {
+      font-size: 0.75rem;
+      transition: transform var(--transicao);
+    }
+
+    .cartao-header[aria-expanded="true"] .cartao-seta {
+      transform: rotate(180deg);
+    }
+
+    .cartao-conteudo {
+      max-height: 0;
+      overflow: hidden;
+      padding: 0 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--cor-texto);
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      background: rgba(3, 4, 94, 0.55);
+    }
+
+    .cartao-conteudo.expandido {
+      max-height: 800px;
+      padding: 1.2rem;
+      border-top: 3px solid var(--cor-primaria);
+    }
+
+    .pontuacao-tabela { margin: 0.75rem 0; }
+
+    .pontuacao-linha {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--cor-border);
+    }
+
+    .pontuacao-linha:last-child { border-bottom: none; }
+
+    .pts {
+      background: var(--cor-terciaria);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      min-width: 52px;
+      text-align: center;
+    }
+
+    .regra-obs {
+      margin-top: 0.75rem;
+      color: var(--cor-texto-light);
+      font-size: 0.85rem;
+    }
+
+    .regra-exemplos { margin: 0.75rem 0 0.4rem; }
+
+    .cartao-conteudo ul,
+    .cartao-conteudo ol {
+      padding-left: 1.4rem;
+      margin: 0.5rem 0;
+    }
+
+    .cartao-conteudo li { margin-bottom: 0.4rem; }
+
+    .btn-prodefy-cartao {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      background: var(--cor-secundaria);
+      color: #1a1a00;
+      font-weight: 700;
+      border-radius: var(--radius);
+      transition: opacity var(--transicao);
+      text-decoration: none;
+    }
+
+    .btn-prodefy-cartao:hover,
+    .btn-prodefy-cartao:focus {
+      opacity: 0.85;
+      outline: 3px solid #48cae4;
+      outline-offset: 2px;
+    }
+
+    /* =====================================================
+       FORMULÁRIO DE PARTICIPAÇÃO
+       ===================================================== */
+    #formulario-participacao p {
+      margin-bottom: 0.5rem;
+      color: rgba(2, 62, 138, 0.85);
+    }
+
+    #formulario-participacao strong {
+      color: #007f5f;
+      font-size: 1.1rem;
+    }
+
+    #form-inscricao {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 480px;
+    }
+
+    #form-inscricao label {
+      font-weight: 600;
+      color: #03045e;
+    }
+
+    #input-nome {
+      padding: 0.75rem 1rem;
+      border: 2px solid rgba(2, 62, 138, 0.30);
+      background: rgba(3, 4, 94, 0.07);
+      color: #03045e;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border-color var(--transicao);
+    }
+
+    #input-nome::placeholder {
+      color: rgba(2, 62, 138, 0.50);
+      opacity: 1;
+    }
+
+    #input-nome:focus {
+      outline: none;
+      border-color: #007f5f;
+      box-shadow: 0 0 0 3px rgba(0, 127, 95, 0.18);
+    }
+
+    #input-nome.valido   { border-color: #007f5f; }
+    #input-nome.invalido { border-color: var(--cor-erro); }
+
+    #feedback-nome {
+      font-size: 0.85rem;
+      min-height: 1.2em;
+      color: #03045e;
+    }
+
+    #feedback-nome.valido   { color: #005c3f; }
+    #feedback-nome.invalido { color: #c62828; }
+
+    #btn-confirmar {
+      margin-top: 0.5rem;
+      padding: 0.85rem 2rem;
+      background: var(--cor-primaria);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transicao), transform var(--transicao);
+      align-self: flex-start;
+    }
+
+    #btn-confirmar:hover:not(:disabled),
+    #btn-confirmar:focus:not(:disabled) {
+      background: var(--cor-terciaria);
+      transform: translateY(-1px);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    #btn-confirmar:disabled {
+      background: rgba(3, 4, 94, 0.08);
+      color: rgba(3, 4, 94, 0.35);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #toast-feedback {
+      margin-top: 1rem;
+      padding: 0.9rem 1.2rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 0.95rem;
+      animation: slideInUp 0.3s ease;
+    }
+
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    #toast-feedback.sucesso {
+      background: rgba(255, 255, 255, 0.90);
+      color: #005c3f;
+      border-left: 4px solid var(--cor-sucesso);
+    }
+
+    #toast-feedback.erro {
+      background: rgba(255, 255, 255, 0.90);
+      color: #c62828;
+      border-left: 4px solid var(--cor-erro);
+    }
+
+    /* =====================================================
+       LISTA DE PARTICIPANTES
+       ===================================================== */
+    #painel-estatisticas {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--cor-bg-card);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      border: 2px solid var(--cor-primaria);
+      transition: transform var(--transicao), box-shadow var(--transicao);
+      box-shadow: 0 2px 10px rgba(3, 4, 94, 0.45);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.60);
+    }
+
+    .stat-card span {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: rgba(2, 62, 138, 0.80);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .stat-valor {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #007f5f;
+      margin-top: 0.2rem;
+    }
+
+    #btn-exportar-csv {
+      padding: 0.6rem 1.4rem;
+      background: transparent;
+      color: #007f5f;
+      border: 2px solid #007f5f;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transicao), color var(--transicao);
+      margin-bottom: 1.5rem;
+    }
+
+    #btn-exportar-csv:hover,
+    #btn-exportar-csv:focus {
+      background: #007f5f;
+      color: #ffffff;
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    .participante-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      border: 2px solid var(--cor-primaria);
+      border-radius: var(--radius);
+      margin-bottom: 0.75rem;
+      background: var(--cor-bg-card);
+      transition: transform var(--transicao), box-shadow var(--transicao);
+      box-shadow: 0 2px 8px rgba(3, 4, 94, 0.40);
+    }
+
+    .participante-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.55);
+    }
+
+    .participante-badge {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .participante-info { flex: 1; }
+
+    .participante-nome {
+      font-weight: 700;
+      font-size: 1rem;
+      color: #03045e;
+    }
+
+    .participante-data {
+      font-size: 0.8rem;
+      color: rgba(2, 62, 138, 0.70);
+    }
+
+    .participante-status {
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+    }
+
+    .participante-status.confirmado {
+      background: rgba(0, 127, 95, 0.15);
+      color: #007f5f;
+    }
+
+    .participante-status.pendente {
+      background: rgba(2, 62, 138, 0.12);
+      color: #023e8a;
+    }
+
+    .participante-acoes {
+      display: none;
+      gap: 0.5rem;
+    }
+
+    body.admin-ativo .participante-acoes {
+      display: flex;
+    }
+
+    .btn-confirmar-pagamento,
+    .btn-remover {
+      padding: 0.4rem 0.8rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity var(--transicao);
+    }
+
+    .btn-confirmar-pagamento {
+      background: var(--cor-sucesso);
+      color: #ffffff;
+    }
+
+    .btn-remover {
+      background: var(--cor-erro);
+      color: #ffffff;
+    }
+
+    .btn-confirmar-pagamento:hover,
+    .btn-remover:hover {
+      opacity: 0.8;
+    }
+
+    #lista-vazia {
+      text-align: center;
+      color: rgba(2, 62, 138, 0.70);
+      font-style: italic;
+      padding: 2rem;
+    }
+
+    /* =====================================================
+       RESULTADOS AO VIVO
+       ===================================================== */
+    #resultados-vivo {
+      border-left: 4px solid #0077b6;
+    }
+
+    #resultados-vivo p {
+      color: rgba(2, 62, 138, 0.85);
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    .btn-resultados {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.9rem 2rem;
+      background: var(--cor-primaria);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background var(--transicao), transform var(--transicao);
+    }
+
+    .btn-resultados:hover,
+    .btn-resultados:focus {
+      background: var(--cor-terciaria);
+      transform: translateY(-2px);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    /* =====================================================
+       RODAPÉ
+       ===================================================== */
+    footer {
+      background: #03045e;
+      color: #ffffff;
+      padding: 1.5rem 2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      box-shadow: 0 -4px 16px rgba(3, 4, 94, 0.80);
+    }
+
+    footer p {
+      font-size: 0.85rem;
+      color: rgba(202, 240, 248, 0.75);
+    }
+
+    #btn-area-admin {
+      background: transparent;
+      color: rgba(202, 240, 248, 0.45);
+      border: 1px solid rgba(202, 240, 248, 0.25);
+      padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: color var(--transicao), border-color var(--transicao);
+    }
+
+    #btn-area-admin:hover,
+    #btn-area-admin:focus {
+      color: #caf0f8;
+      border-color: rgba(202, 240, 248, 0.70);
+      outline: 2px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    #painel-admin {
+      background: rgba(2, 62, 138, 0.95);
+      color: var(--cor-texto);
+      border-radius: var(--radius);
+      padding: 2rem;
+      width: 100%;
+      max-width: 700px;
+      box-shadow: 0 4px 20px rgba(3, 4, 94, 0.80);
+      text-align: left;
+      border: 2px solid var(--cor-primaria);
+    }
+
+    #painel-admin h2 {
+      margin-bottom: 1.2rem;
+      color: var(--cor-secundaria);
+    }
+
+    #painel-admin label,
+    #painel-admin p,
+    #painel-admin .campo-regra-nome {
+      color: var(--cor-texto);
+    }
+
+    /* Formulário de login */
+    #form-admin-login {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      max-width: 320px;
+    }
+
+    #form-admin-login label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--cor-texto);
+    }
+
+    #input-senha-admin {
+      padding: 0.7rem 1rem;
+      border: 2px solid var(--cor-border);
+      background: rgba(3, 4, 94, 0.65);
+      color: var(--cor-texto);
+      border-radius: var(--radius);
+      font-size: 1rem;
+      transition: border-color var(--transicao);
+    }
+
+    #input-senha-admin::placeholder {
+      color: var(--cor-texto-light);
+      opacity: 0.65;
+    }
+
+    #input-senha-admin:focus {
+      outline: none;
+      border-color: var(--cor-primaria);
+      box-shadow: 0 0 0 3px rgba(85, 166, 48, 0.20);
+    }
+
+    #feedback-senha {
+      font-size: 0.85rem;
+      color: #ef5350;
+      min-height: 1.2em;
+    }
+
+    #form-admin-login button[type="submit"] {
+      padding: 0.75rem 1.5rem;
+      background: var(--cor-primaria);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background var(--transicao);
+      align-self: flex-start;
+    }
+
+    #form-admin-login button[type="submit"]:hover,
+    #form-admin-login button[type="submit"]:focus {
+      background: var(--cor-terciaria);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    /* Painel logado */
+    .admin-logado-info {
+      color: #80b918;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .admin-acoes-globais {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-admin-perigo {
+      padding: 0.65rem 1.2rem;
+      background: var(--cor-erro);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity var(--transicao);
+    }
+
+    .btn-admin-perigo:hover,
+    .btn-admin-perigo:focus {
+      opacity: 0.82;
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    .btn-admin-secundario {
+      padding: 0.65rem 1.2rem;
+      background: transparent;
+      color: var(--cor-texto-light);
+      border: 1px solid var(--cor-border);
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color var(--transicao), border-color var(--transicao);
+    }
+
+    .btn-admin-secundario:hover,
+    .btn-admin-secundario:focus {
+      color: var(--cor-texto);
+      border-color: var(--cor-primaria);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    .btn-admin-primario {
+      padding: 0.65rem 1.2rem;
+      background: var(--cor-primaria);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background var(--transicao);
+    }
+
+    .btn-admin-primario:hover,
+    .btn-admin-primario:focus {
+      background: var(--cor-terciaria);
+      outline: 3px solid var(--cor-secundaria);
+      outline-offset: 2px;
+    }
+
+    /* Edição de regras */
+    .form-editar-regras {
+      margin-top: 1.5rem;
+      border-top: 2px solid var(--cor-border);
+      padding-top: 1.5rem;
+    }
+
+    .regra-aviso {
+      font-size: 0.85rem;
+      color: var(--cor-texto);
+      margin-bottom: 1rem;
+      padding: 0.6rem 1rem;
+      background: rgba(170, 204, 0, 0.12);
+      border-radius: 6px;
+      border-left: 3px solid var(--cor-secundaria);
+    }
+
+    .campo-regra {
+      margin-bottom: 1.2rem;
+      padding: 1rem;
+      border: 2px solid var(--cor-terciaria);
+      border-radius: var(--radius);
+      background: rgba(0, 119, 182, 0.15);
+    }
+
+    .campo-regra-nome {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--cor-secundaria);
+      margin-bottom: 0.75rem;
+    }
+
+    .campo-regra label {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--cor-texto-light);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+
+    .input-titulo-regra,
+    .textarea-conteudo-regra {
+      width: 100%;
+      padding: 0.55rem 0.8rem;
+      border: 1px solid var(--cor-border);
+      background: rgba(3, 4, 94, 0.65);
+      color: var(--cor-texto);
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color var(--transicao);
+    }
+
+    .textarea-conteudo-regra {
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    .input-titulo-regra:focus,
+    .textarea-conteudo-regra:focus {
+      outline: none;
+      border-color: var(--cor-primaria);
+      box-shadow: 0 0 0 2px rgba(85, 166, 48, 0.18);
+    }
+
+    .form-regras-acoes {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding-top: 0.5rem;
+    }
+
+    /* =====================================================
+       RESPONSIVIDADE
+       ===================================================== */
+    @media (max-width: 1023px) {
+      .painel-grid,
+      .cartoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      #painel-estatisticas {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 767px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.2rem;
+        gap: 1rem;
+      }
+
+      header h1 {
+        flex: none;
+        width: 100%;
+        font-size: 1.2rem;
+      }
+
+      .header-acoes {
+        width: 100%;
+        justify-content: flex-end;
+      }
+
+      .header-acoes a {
+        flex: 1;
+        text-align: center;
+      }
+
+      main {
+        padding: 1rem;
+        gap: 1.5rem;
+      }
+
+      section { padding: 1.2rem; }
+
+      .painel-grid,
+      .cartoes-grid,
+      #painel-estatisticas {
+        grid-template-columns: 1fr;
+      }
+
+      #btn-confirmar {
+        width: 100%;
+        text-align: center;
+      }
+
+      .participante-card { flex-wrap: wrap; }
+
+      .participante-acoes {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      #estimativa-premiacao ul {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header { padding: 1rem; }
+
+      .painel-card { padding: 0.8rem; }
+
+      .painel-label { font-size: 0.7rem; }
+
+      .painel-valor { font-size: 1.2rem; }
+
+      .cartao-header {
+        padding: 0.8rem;
+        font-size: 0.85rem;
+      }
+
+      #painel-estatisticas { gap: 0.75rem; }
+
+      .stat-card { padding: 0.75rem; }
+
+      .stat-valor { font-size: 1rem; }
+    }
+  </style>
+
+  <script>
+    /* =====================================================
+       CONSTANTES GLOBAIS — valores fixos do bolão
+       ===================================================== */
+    const TOTAL_JOGOS    = 104;
+    const VALOR_BOLAO    = 100;
+    const ADMIN_PASSWORD = 'admin123';
+
+    /* Estado de autenticação — Fase 8 alterna para true após login */
+    let isAdminAuthenticated = false;
+
+    /* Arredondado com toFixed para evitar ruído de ponto flutuante
+       (ex: 100/104 = 0.9615..., exibimos apenas R$ 0,96) */
+    const VALOR_POR_JOGO = parseFloat((VALOR_BOLAO / TOTAL_JOGOS).toFixed(2));
+
+    /* Percentuais de premiação definidos no PRD */
+    const PERC_PRIMEIRO = 0.50;
+    const PERC_SEGUNDO  = 0.30;
+    const PERC_TERCEIRO = 0.20;
+
+
+    /* =====================================================
+       UTILITÁRIOS
+       ===================================================== */
+
+    /* Formata número como moeda brasileira: 100 → "R$ 100,00" */
+    function formatarMoeda(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    /* Formata ISO date para exibição legível: "04/06/2026 às 10:30" */
+    function formatarData(isoString) {
+      const d = new Date(isoString);
+      const data = d.toLocaleDateString('pt-BR');
+      const hora = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+      return `${data} às ${hora}`;
+    }
+
+    /* Gera ID simples baseado em timestamp + número aleatório */
+    function gerarId() {
+      return Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    }
+
+    /* Escapa caracteres HTML para exibir código dentro de inputs/textareas */
+    function escaparHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+
+    /* =====================================================
+       LOCALSTORAGE — leitura/escrita centralizada
+       ===================================================== */
+
+    function carregarParticipantes() {
+      return JSON.parse(localStorage.getItem('bolao_participantes') || '[]');
+    }
+
+    function salvarParticipantes(lista) {
+      localStorage.setItem('bolao_participantes', JSON.stringify(lista));
+    }
+
+
+    /* =====================================================
+       REGRAS DO BOLÃO — conteúdo padrão extraído do PDF
+       Inclui titulo para que a Fase 9 (admin) possa editar
+       ===================================================== */
+
+    const REGRAS_PADRAO = {
+      regraGeral: {
+        id:     'conteudo-regra-geral',
+        titulo: 'Regras Gerais',
+        conteudo: `
+          <ul>
+            <li>Cada participante cadastra seus palpites nos prazos da plataforma ProdeFy.</li>
+            <li>Resultados e classificações são atualizados automaticamente pelo sistema.</li>
+            <li>O pagamento deve ser realizado antes do início da competição.</li>
+            <li>A participação é confirmada após o recebimento do valor da inscrição.</li>
+          </ul>`
+      },
+      pontuacaoCampo: {
+        id:     'conteudo-pontuacao-campo',
+        titulo: 'Pontuação — Resultado em Campo',
+        conteudo: `
+          <p class="regra-obs"><em>Inclui os 90 min, acréscimos e prorrogação. Pênaltis são pontuados separadamente.</em></p>
+          <div class="pontuacao-tabela">
+            <div class="pontuacao-linha"><span class="pts">6 pts</span><span>Acertar o <strong>placar exato</strong> da partida</span></div>
+            <div class="pontuacao-linha"><span class="pts">4 pts</span><span>Acertar o <strong>vencedor</strong> e os <strong>gols de um dos times</strong></span></div>
+            <div class="pontuacao-linha"><span class="pts">3 pts</span><span>Acertar apenas o <strong>vencedor</strong> (sem o placar exato)</span></div>
+            <div class="pontuacao-linha"><span class="pts">1 pt</span><span>Acertar os <strong>gols de um dos times</strong>, sem acertar o vencedor</span></div>
+          </div>
+          <p class="regra-exemplos"><strong>Exemplos:</strong></p>
+          <ul>
+            <li>Palpite 2×1 → Resultado 2×1 = <strong>6 pts</strong></li>
+            <li>Palpite 2×0 → Resultado 2×1 = <strong>4 pts</strong></li>
+            <li>Palpite 1×0 → Resultado 3×1 = <strong>3 pts</strong></li>
+            <li>Palpite 2×1 → Resultado 0×1 = <strong>1 pt</strong></li>
+          </ul>`
+      },
+      empates: {
+        id:     'conteudo-empates',
+        titulo: 'Pontuação — Empates',
+        conteudo: `
+          <div class="pontuacao-tabela">
+            <div class="pontuacao-linha"><span class="pts">6 pts</span><span>Acertar o <strong>empate exato</strong></span></div>
+            <div class="pontuacao-linha"><span class="pts">3 pts</span><span>Acertar o empate, mas <strong>não</strong> o placar exato</span></div>
+          </div>
+          <p class="regra-exemplos"><strong>Exemplos:</strong></p>
+          <ul>
+            <li>Palpite 1×1 → Resultado 1×1 = <strong>6 pts</strong></li>
+            <li>Palpite 0×0 → Resultado 2×2 = <strong>3 pts</strong></li>
+          </ul>`
+      },
+      penaltis: {
+        id:     'conteudo-penaltis',
+        titulo: 'Pontuação — Pênaltis',
+        conteudo: `
+          <div class="pontuacao-tabela">
+            <div class="pontuacao-linha"><span class="pts">9 pts</span><span>Empate exato + <strong>vencedor dos pênaltis</strong></span></div>
+            <div class="pontuacao-linha"><span class="pts">6 pts</span><span>Empate exato + errar o vencedor dos pênaltis</span></div>
+            <div class="pontuacao-linha"><span class="pts">6 pts</span><span>Empate (sem placar exato) + vencedor dos pênaltis</span></div>
+            <div class="pontuacao-linha"><span class="pts">3 pts</span><span>Apenas empate, sem placar exato e sem vencedor dos pênaltis</span></div>
+          </div>
+          <p class="regra-obs"><em>Se você prever vitória (ex: 2×1) e a partida terminar empatada nos pênaltis, não recebe pontos pelo vencedor dos pênaltis.</em></p>`
+      },
+      premiacao: {
+        id:     'conteudo-premiacao',
+        titulo: 'Premiação',
+        conteudo: `
+          <div class="pontuacao-tabela">
+            <div class="pontuacao-linha"><span class="pts">🥇 1º</span><span><strong>50%</strong> do total arrecadado</span></div>
+            <div class="pontuacao-linha"><span class="pts">🥈 2º</span><span><strong>30%</strong> do total arrecadado</span></div>
+            <div class="pontuacao-linha"><span class="pts">🥉 3º</span><span><strong>20%</strong> do total arrecadado</span></div>
+          </div>
+          <p class="regra-obs"><em>Premiação estimada com base nos participantes cadastrados. Pode variar até o encerramento das inscrições.</em></p>`
+      },
+      comoParticipar: {
+        id:     'conteudo-como-participar',
+        titulo: 'Como Participar',
+        conteudo: `
+          <ol>
+            <li>Cadastre seu nome completo nesta página</li>
+            <li>Confirme o pagamento de <strong>R$&nbsp;100,00</strong> com o organizador</li>
+            <li>Acesse a plataforma ProdeFy pelo link abaixo</li>
+            <li>Faça seus palpites para cada jogo da Copa</li>
+            <li>Acompanhe os resultados em tempo real</li>
+          </ol>
+          <a href="https://prodefy.co/app/group/dd0d19f3-b37d-4d1d-b9f6-856e514bbcb6"
+             target="_blank" rel="noopener noreferrer"
+             class="btn-prodefy-cartao">
+            Acessar ProdeFy ↗
+          </a>`
+      },
+      prazos: {
+        id:     'conteudo-prazos',
+        titulo: 'Prazos e Pagamento',
+        conteudo: `
+          <ul>
+            <li><strong>Inscrições:</strong> Abertas até o início da Copa (sem corte definido)</li>
+            <li><strong>Pagamento:</strong> R$&nbsp;100,00 por participante, antes do primeiro jogo</li>
+            <li><strong>Confirmação:</strong> Participação confirmada após recebimento do pagamento</li>
+            <li><strong>Palpites:</strong> Dentro dos prazos estabelecidos pela plataforma ProdeFy</li>
+          </ul>`
+      }
+    };
+
+
+    /* =====================================================
+       CARTÕES DE REGRAS — leitura, preenchimento e accordion
+       ===================================================== */
+
+    /* Retorna regras do localStorage ou usa o padrão do PDF */
+    function carregarRegras() {
+      const regrasStorage = JSON.parse(localStorage.getItem('bolao_regras') || 'null');
+      return regrasStorage || REGRAS_PADRAO;
+    }
+
+    /* Injeta conteúdo HTML e atualiza o título visível de cada cartão */
+    function preencherConteudoCartoes(regras) {
+      Object.values(regras).forEach(function (regra) {
+        const conteudoEl = document.getElementById(regra.id);
+        if (!conteudoEl) return;
+        conteudoEl.innerHTML = regra.conteudo;
+        /* Sobe ao <article> pai para atualizar o span de título do botão */
+        const cartao   = conteudoEl.closest('.cartao-regra');
+        const tituloEl = cartao && cartao.querySelector('.cartao-titulo');
+        if (tituloEl) tituloEl.textContent = regra.titulo;
+      });
+    }
+
+    /* Adiciona listeners de clique a todos os cartões e remove o atributo
+       hidden — a partir daqui o CSS controla visibilidade via max-height */
+    function inicializarCartoesRegras() {
+      document.querySelectorAll('.cartao-header').forEach(function (btn) {
+        const conteudoId = btn.getAttribute('aria-controls');
+        const conteudo   = document.getElementById(conteudoId);
+        if (conteudo) {
+          conteudo.removeAttribute('hidden');
+          btn.addEventListener('click', function () {
+            toggleCartao(btn, conteudo);
+          });
+        }
+      });
+    }
+
+    /* Alterna estado expandido/recolhido de um cartão */
+    function toggleCartao(btn, conteudo) {
+      const estaExpandido = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!estaExpandido));
+      conteudo.classList.toggle('expandido', !estaExpandido);
+    }
+
+
+    /* =====================================================
+       VALIDAÇÃO DE NOME
+       ===================================================== */
+
+    /* Aceita letras (incluindo acentuadas), espaços e hífens */
+    const REGEX_NOME = /^[a-zA-ZÀ-ÿ\s-]+$/;
+
+    function validarNome(nome) {
+      const nomeAjustado = nome.trim();
+
+      if (nomeAjustado.length === 0) {
+        return { valido: false, erro: 'Por favor, digite seu nome.' };
+      }
+      if (nomeAjustado.length < 3) {
+        return { valido: false, erro: 'Nome muito curto (mínimo 3 caracteres).' };
+      }
+      if (nomeAjustado.length > 50) {
+        return { valido: false, erro: 'Nome muito longo (máximo 50 caracteres).' };
+      }
+      if (!REGEX_NOME.test(nomeAjustado)) {
+        return { valido: false, erro: 'Use apenas letras, espaços e hífens.' };
+      }
+
+      /* Duplicata verificada sem distinção de maiúsculas/minúsculas */
+      const participantes = carregarParticipantes();
+      const duplicata = participantes.some(function (p) {
+        return p.nome.toLowerCase() === nomeAjustado.toLowerCase();
+      });
+      if (duplicata) {
+        return { valido: false, erro: 'Este nome já foi registrado.' };
+      }
+
+      return { valido: true, erro: '' };
+    }
+
+
+    /* =====================================================
+       FORMULÁRIO DE PARTICIPAÇÃO
+       ===================================================== */
+
+    function inicializarFormulario() {
+      const input = document.getElementById('input-nome');
+      const btn   = document.getElementById('btn-confirmar');
+      const form  = document.getElementById('form-inscricao');
+
+      /* Valida a cada keystroke para feedback imediato */
+      input.addEventListener('input', function () {
+        const resultado = validarNome(input.value);
+        atualizarFeedbackValidacao(resultado, input.value);
+        btn.disabled = !resultado.valido;
+      });
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const resultado = validarNome(input.value);
+        if (!resultado.valido) return;
+
+        adicionarParticipante(input.value.trim());
+        input.value = '';
+        btn.disabled = true;
+        atualizarFeedbackValidacao({ valido: false, erro: '' }, '');
+        mostrarToast(
+          '✓ Seu nome foi registrado! Entre em contato com o organizador para confirmar o pagamento.',
+          'sucesso'
+        );
+      });
+    }
+
+    /* Atualiza borda do input e texto de feedback com o resultado da validação */
+    function atualizarFeedbackValidacao(resultado, valorAtual) {
+      const input    = document.getElementById('input-nome');
+      const feedback = document.getElementById('feedback-nome');
+
+      input.classList.remove('valido', 'invalido');
+      feedback.classList.remove('valido', 'invalido');
+      feedback.textContent = '';
+
+      /* Campo vazio não recebe feedback — evita mensagem de erro ao abrir a página */
+      if (!valorAtual || valorAtual.trim().length === 0) return;
+
+      if (resultado.valido) {
+        input.classList.add('valido');
+        feedback.classList.add('valido');
+        feedback.textContent = '✓ Nome válido';
+      } else {
+        input.classList.add('invalido');
+        feedback.classList.add('invalido');
+        feedback.textContent = resultado.erro;
+      }
+    }
+
+    /* Capitaliza cada palavra e salva o participante no localStorage */
+    function adicionarParticipante(nome) {
+      const nomeFormatado = nome
+        .trim()
+        .toLowerCase()
+        .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
+
+      const participante = {
+        id:                       gerarId(),
+        nome:                     nomeFormatado,
+        dataInscricao:            new Date().toISOString(),
+        pagamentoConfirmado:      false,
+        dataConfirmacaoPagamento: null
+      };
+
+      const lista = carregarParticipantes();
+      lista.push(participante);
+      salvarParticipantes(lista);
+
+      /* Atualiza painel informativo imediatamente (total arrecadado / premiação) */
+      renderizarPainelInformativo();
+      renderizarListaParticipantes();
+    }
+
+    /* Exibe toast por 5 segundos e o remove — feedback não-intrusivo */
+    function mostrarToast(mensagem, tipo) {
+      const toast     = document.getElementById('toast-feedback');
+      toast.textContent = mensagem;
+      toast.className   = tipo;
+      toast.removeAttribute('hidden');
+
+      setTimeout(function () {
+        toast.setAttribute('hidden', '');
+        toast.textContent = '';
+        toast.className   = '';
+      }, 5000);
+    }
+
+
+    /* =====================================================
+       LISTA DE PARTICIPANTES E ESTATÍSTICAS
+       ===================================================== */
+
+    /* Retorna badge emoji para as 3 primeiras posições, número para as demais */
+    function obterBadge(index) {
+      const badges = ['🥇', '🥈', '🥉'];
+      return badges[index] !== undefined ? badges[index] : '#' + (index + 1);
+    }
+
+    /* Calcula todos os totais usados no painel de estatísticas */
+    function calcularEstatisticas() {
+      const participantes    = carregarParticipantes();
+      const totalCadastrados = participantes.length;
+      const totalConfirmados = participantes.filter(function (p) {
+        return p.pagamentoConfirmado;
+      }).length;
+      const totalArrecadado  = totalCadastrados * VALOR_BOLAO;
+      const totalApostas     = totalCadastrados * TOTAL_JOGOS;
+
+      return {
+        totalCadastrados,
+        totalConfirmados,
+        totalArrecadado,
+        totalApostas,
+        premiosPrimeiro: totalArrecadado * PERC_PRIMEIRO,
+        premioSegundo:   totalArrecadado * PERC_SEGUNDO,
+        premioTerceiro:  totalArrecadado * PERC_TERCEIRO
+      };
+    }
+
+    /* Atualiza os 4 cards de estatísticas com os valores calculados */
+    function renderizarEstatisticas(stats) {
+      document.getElementById('stat-total-cadastrados').textContent =
+        stats.totalCadastrados + ' participante' + (stats.totalCadastrados !== 1 ? 's' : '');
+      document.getElementById('stat-total-confirmados').textContent =
+        stats.totalConfirmados + ' confirmado' + (stats.totalConfirmados !== 1 ? 's' : '');
+      document.getElementById('stat-arrecadado').textContent =
+        formatarMoeda(stats.totalArrecadado);
+      document.getElementById('stat-apostas').textContent =
+        stats.totalApostas.toLocaleString('pt-BR') + ' apostas';
+    }
+
+    /* Monta o elemento <li> de um participante com todos seus dados */
+    function criarCardParticipante(participante, index) {
+      const li      = document.createElement('li');
+      li.className  = 'participante-card';
+      li.dataset.id = participante.id;
+
+      const statusTexto  = participante.pagamentoConfirmado
+        ? 'Pagamento confirmado ✓'
+        : 'Aguardando pagamento';
+      const statusClasse = participante.pagamentoConfirmado ? 'confirmado' : 'pendente';
+
+      /* Botão confirmar exibido só para pendentes — após confirmar não faz sentido */
+      const btnConfirmar = participante.pagamentoConfirmado
+        ? ''
+        : `<button class="btn-confirmar-pagamento" data-id="${participante.id}" type="button"
+             aria-label="Confirmar pagamento de ${participante.nome}">
+             Confirmar Pagamento
+           </button>`;
+
+      li.innerHTML = `
+        <span class="participante-badge" aria-label="Posição ${index + 1}">${obterBadge(index)}</span>
+        <div class="participante-info">
+          <p class="participante-nome">${participante.nome}</p>
+          <p class="participante-data">${formatarData(participante.dataInscricao)}</p>
+        </div>
+        <span class="participante-status ${statusClasse}">${statusTexto}</span>
+        <div class="participante-acoes" aria-label="Ações de administrador">
+          ${btnConfirmar}
+          <button class="btn-remover" data-id="${participante.id}" type="button"
+            aria-label="Remover ${participante.nome}">Remover</button>
+        </div>
+      `;
+
+      return li;
+    }
+
+    /* Re-renderiza lista completa e estatísticas — ponto único de atualização da UI */
+    function renderizarListaParticipantes() {
+      const participantes = carregarParticipantes();
+      const lista         = document.getElementById('lista-participantes-items');
+      const listaVazia    = document.getElementById('lista-vazia');
+
+      renderizarEstatisticas(calcularEstatisticas());
+
+      /* Limpa antes de re-renderizar para não acumular itens duplicados */
+      lista.innerHTML = '';
+
+      if (participantes.length === 0) {
+        listaVazia.removeAttribute('hidden');
+        return;
+      }
+
+      listaVazia.setAttribute('hidden', '');
+      participantes.forEach(function (p, index) {
+        lista.appendChild(criarCardParticipante(p, index));
+      });
+    }
+
+
+    /* =====================================================
+       EXPORTAÇÃO CSV
+       ===================================================== */
+
+    function exportarCSV() {
+      const participantes = carregarParticipantes();
+
+      if (participantes.length === 0) {
+        mostrarToast('Nenhum participante para exportar.', 'erro');
+        return;
+      }
+
+      /* BOM UTF-8 garante leitura correta de acentos ao abrir no Excel */
+      const bom      = '﻿';
+      const cabecalho = 'Nome,Data de Inscrição,Status';
+
+      const linhas = participantes.map(function (p) {
+        /* Escapa aspas duplas internas com "" (padrão CSV/RFC 4180) */
+        const nome   = '"' + p.nome.replace(/"/g, '""') + '"';
+        const data   = '"' + formatarData(p.dataInscricao) + '"';
+        const status = p.pagamentoConfirmado ? 'Confirmado' : 'Aguardando Pagamento';
+        return [nome, data, status].join(',');
+      });
+
+      const csv      = bom + [cabecalho].concat(linhas).join('\n');
+      const blob     = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url      = URL.createObjectURL(blob);
+      const dataHoje = new Date().toISOString().split('T')[0];
+
+      const link    = document.createElement('a');
+      link.href     = url;
+      link.download = 'bolao_participantes_' + dataHoje + '.csv';
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+
+      /* Libera memória do URL temporário após o download iniciar */
+      setTimeout(function () {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      }, 100);
+    }
+
+    function inicializarExportacao() {
+      document.getElementById('btn-exportar-csv').addEventListener('click', exportarCSV);
+    }
+
+
+    /* =====================================================
+       ÁREA DO ADMIN — autenticação e ações protegidas
+       ===================================================== */
+
+    function inicializarAdmin() {
+      /* Restaura sessão se a aba ainda está aberta */
+      if (sessionStorage.getItem('bolao_admin_auth') === 'true') {
+        isAdminAuthenticated = true;
+        document.body.classList.add('admin-ativo');
+      }
+
+      document.getElementById('btn-area-admin').addEventListener('click', function () {
+        const painel = document.getElementById('painel-admin');
+        if (painel.hasAttribute('hidden')) {
+          painel.removeAttribute('hidden');
+          renderizarPainelAdmin();
+        } else {
+          painel.setAttribute('hidden', '');
+          document.getElementById('btn-area-admin').focus();
+        }
+      });
+
+      /* Escape fecha o painel e devolve foco ao botão (WCAG 2.1.2) */
+      document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Escape') return;
+        const painel = document.getElementById('painel-admin');
+        if (!painel.hasAttribute('hidden')) {
+          painel.setAttribute('hidden', '');
+          document.getElementById('btn-area-admin').focus();
+        }
+      });
+
+      /* Event delegation — captura cliques nos botões de cada card de participante */
+      document.getElementById('lista-participantes-items').addEventListener('click', function (e) {
+        if (!isAdminAuthenticated) return;
+        const btn = e.target.closest('button');
+        if (!btn) return;
+
+        if (btn.classList.contains('btn-confirmar-pagamento')) {
+          confirmarPagamento(btn.dataset.id);
+        } else if (btn.classList.contains('btn-remover')) {
+          removerParticipante(btn.dataset.id);
+        }
+      });
+    }
+
+    /* Renderiza o painel conforme estado de autenticação */
+    function renderizarPainelAdmin() {
+      const painel = document.getElementById('painel-admin');
+
+      if (!isAdminAuthenticated) {
+        painel.innerHTML = `
+          <h2>Área do Organizador</h2>
+          <form id="form-admin-login" novalidate>
+            <label for="input-senha-admin">Senha de acesso</label>
+            <input type="password" id="input-senha-admin"
+              placeholder="Digite a senha..." autocomplete="current-password">
+            <p id="feedback-senha" role="alert" aria-live="polite"></p>
+            <button type="submit">Entrar</button>
+          </form>
+        `;
+
+        document.getElementById('form-admin-login').addEventListener('submit', function (e) {
+          e.preventDefault();
+          autenticarAdmin(document.getElementById('input-senha-admin').value);
+        });
+
+        /* Foco automático no campo de senha */
+        document.getElementById('input-senha-admin').focus();
+      } else {
+        painel.innerHTML = `
+          <h2>Área do Organizador</h2>
+          <p class="admin-logado-info">✓ Sessão ativa — ações de administrador habilitadas na lista</p>
+          <div class="admin-acoes-globais">
+            <button id="btn-editar-regras" type="button" class="btn-admin-primario">
+              ✏️ Editar Regras
+            </button>
+            <button id="btn-limpar-tudo" type="button" class="btn-admin-perigo">
+              🗑 Limpar lista completa
+            </button>
+            <button id="btn-sair-admin" type="button" class="btn-admin-secundario">
+              Sair
+            </button>
+          </div>
+          <div id="secao-editar-regras" hidden></div>
+        `;
+
+        document.getElementById('btn-editar-regras').addEventListener('click', function () {
+          const secao = document.getElementById('secao-editar-regras');
+          if (secao.hasAttribute('hidden')) {
+            mostrarFormularioRegras();
+            secao.removeAttribute('hidden');
+            this.textContent = '✕ Fechar Editor';
+          } else {
+            secao.setAttribute('hidden', '');
+            this.textContent = '✏️ Editar Regras';
+          }
+        });
+        document.getElementById('btn-limpar-tudo').addEventListener('click', limparTudo);
+        document.getElementById('btn-sair-admin').addEventListener('click', sairAdmin);
+
+        /* Move foco para o primeiro botão ao entrar no painel logado */
+        document.getElementById('btn-editar-regras').focus();
+      }
+    }
+
+    function autenticarAdmin(senha) {
+      if (senha === ADMIN_PASSWORD) {
+        isAdminAuthenticated = true;
+        sessionStorage.setItem('bolao_admin_auth', 'true');
+        document.body.classList.add('admin-ativo');
+        renderizarPainelAdmin();
+        renderizarListaParticipantes();
+      } else {
+        document.getElementById('feedback-senha').textContent = 'Senha incorreta. Tente novamente.';
+        const inputSenha = document.getElementById('input-senha-admin');
+        inputSenha.value = '';
+        inputSenha.focus();
+      }
+    }
+
+    function sairAdmin() {
+      isAdminAuthenticated = false;
+      sessionStorage.removeItem('bolao_admin_auth');
+      document.body.classList.remove('admin-ativo');
+      document.getElementById('painel-admin').setAttribute('hidden', '');
+      renderizarListaParticipantes();
+      document.getElementById('btn-area-admin').focus();
+    }
+
+    function confirmarPagamento(id) {
+      const lista        = carregarParticipantes();
+      const participante = lista.find(function (p) { return p.id === id; });
+      if (!participante) return;
+
+      participante.pagamentoConfirmado      = true;
+      participante.dataConfirmacaoPagamento = new Date().toISOString();
+      salvarParticipantes(lista);
+      renderizarPainelInformativo();
+      renderizarListaParticipantes();
+      mostrarToast('✓ Pagamento de ' + participante.nome + ' confirmado.', 'sucesso');
+    }
+
+    function removerParticipante(id) {
+      const lista        = carregarParticipantes();
+      const participante = lista.find(function (p) { return p.id === id; });
+      if (!participante) return;
+
+      if (!confirm('Remover "' + participante.nome + '"? Esta ação não pode ser desfeita.')) return;
+
+      salvarParticipantes(lista.filter(function (p) { return p.id !== id; }));
+      renderizarPainelInformativo();
+      renderizarListaParticipantes();
+      mostrarToast(participante.nome + ' foi removido.', 'erro');
+    }
+
+    function limparTudo() {
+      const lista = carregarParticipantes();
+
+      if (lista.length === 0) {
+        mostrarToast('A lista já está vazia.', 'erro');
+        return;
+      }
+
+      /* Confirmação dupla — ação irreversível conforme PRD */
+      if (!confirm('Limpar TODOS os ' + lista.length + ' participante(s) cadastrados?')) return;
+      if (!confirm('Esta ação é irreversível. Confirma a exclusão completa da lista?')) return;
+
+      salvarParticipantes([]);
+      renderizarPainelInformativo();
+      renderizarListaParticipantes();
+      mostrarToast('Lista de participantes limpa.', 'erro');
+    }
+
+
+    /* =====================================================
+       EDIÇÃO DE REGRAS PELO ADMIN
+       ===================================================== */
+
+    /* Constrói o formulário de edição dentro de #secao-editar-regras */
+    function mostrarFormularioRegras() {
+      const secao  = document.getElementById('secao-editar-regras');
+      const regras = carregarRegras();
+
+      const campos = Object.entries(regras).map(function (entrada) {
+        const chave = entrada[0];
+        const regra = entrada[1];
+        return `
+          <div class="campo-regra">
+            <p class="campo-regra-nome">${escaparHtml(regra.titulo)}</p>
+            <label>
+              Título
+              <input type="text" class="input-titulo-regra" data-chave="${chave}"
+                value="${escaparHtml(regra.titulo)}">
+            </label>
+            <label>
+              Conteúdo (HTML)
+              <textarea class="textarea-conteudo-regra" data-chave="${chave}"
+                rows="7">${escaparHtml(regra.conteudo)}</textarea>
+            </label>
+          </div>`;
+      }).join('');
+
+      secao.innerHTML = `
+        <form id="form-editar-regras" class="form-editar-regras">
+          <p class="regra-aviso">
+            ℹ️ O conteúdo aceita HTML básico:
+            &lt;ul&gt;, &lt;li&gt;, &lt;strong&gt;, &lt;em&gt;, &lt;p&gt;.
+          </p>
+          ${campos}
+          <div class="form-regras-acoes">
+            <button type="submit" class="btn-admin-primario">💾 Salvar Alterações</button>
+            <button type="button" id="btn-restaurar-padrao" class="btn-admin-perigo">
+              ↩ Restaurar Padrões
+            </button>
+          </div>
+        </form>
+      `;
+
+      document.getElementById('form-editar-regras').addEventListener('submit', function (e) {
+        e.preventDefault();
+        salvarRegrasEditadas();
+      });
+
+      document.getElementById('btn-restaurar-padrao').addEventListener('click', restaurarRegrasParadrao);
+    }
+
+    /* Lê os campos do formulário e persiste no localStorage */
+    function salvarRegrasEditadas() {
+      const regras = carregarRegras();
+
+      document.querySelectorAll('.input-titulo-regra').forEach(function (input) {
+        const chave = input.dataset.chave;
+        if (regras[chave]) regras[chave].titulo = input.value.trim();
+      });
+
+      document.querySelectorAll('.textarea-conteudo-regra').forEach(function (textarea) {
+        const chave = textarea.dataset.chave;
+        if (regras[chave]) regras[chave].conteudo = textarea.value;
+      });
+
+      localStorage.setItem('bolao_regras', JSON.stringify(regras));
+      preencherConteudoCartoes(regras);
+      mostrarToast('✓ Regras atualizadas com sucesso.', 'sucesso');
+    }
+
+    /* Remove bolao_regras do localStorage e reverte os cartões ao PDF original */
+    function restaurarRegrasParadrao() {
+      if (!confirm('Restaurar todas as regras para o conteúdo original do PDF? As edições serão perdidas.')) return;
+      localStorage.removeItem('bolao_regras');
+      preencherConteudoCartoes(REGRAS_PADRAO);
+      mostrarFormularioRegras(); // re-renderiza form com valores padrão
+      mostrarToast('✓ Regras restauradas para o padrão.', 'sucesso');
+    }
+
+
+    /* =====================================================
+       PAINEL INFORMATIVO — atualiza os 4 cards + premiação
+       ===================================================== */
+
+    function renderizarPainelInformativo() {
+      const participantes   = carregarParticipantes();
+      const totalArrecadado = participantes.length * VALOR_BOLAO;
+
+      document.getElementById('total-jogos').textContent      = `${TOTAL_JOGOS} jogos`;
+      document.getElementById('valor-bolao').textContent      = formatarMoeda(VALOR_BOLAO);
+      document.getElementById('valor-por-jogo').textContent   = formatarMoeda(VALOR_POR_JOGO);
+      document.getElementById('total-arrecadado').textContent = formatarMoeda(totalArrecadado);
+
+      /* Premiação estimada sobre o total de cadastrados (não só confirmados),
+         conforme PRD — serve como projeção para motivar novas inscrições */
+      document.getElementById('premio-primeiro').textContent = formatarMoeda(totalArrecadado * PERC_PRIMEIRO);
+      document.getElementById('premio-segundo').textContent  = formatarMoeda(totalArrecadado * PERC_SEGUNDO);
+      document.getElementById('premio-terceiro').textContent = formatarMoeda(totalArrecadado * PERC_TERCEIRO);
+    }
+
+
+
+    /* =====================================================
+       INICIALIZAÇÃO — ponto de entrada da aplicação
+       ===================================================== */
+
+    document.addEventListener('DOMContentLoaded', function () {
+      renderizarPainelInformativo();
+
+      const regras = carregarRegras();
+      preencherConteudoCartoes(regras);
+      inicializarCartoesRegras();
+
+      inicializarFormulario();
+      inicializarExportacao();
+      inicializarAdmin();
+      renderizarListaParticipantes();
+    });
+  </script>
+
+</body>
+</html>
