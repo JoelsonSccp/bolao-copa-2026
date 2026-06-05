@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,6 +15,11 @@
   <header>
     <h1>🇧🇷 Bolão da Copa 2026 | Biancade Engenharia</h1>
     <div class="header-acoes">
+      <button id="toggle-tema"
+              class="btn-toggle-tema"
+              aria-label="Alternar tema">
+        ☀️
+      </button>
       <a href="https://prodefy.co/app/group/dd0d19f3-b37d-4d1d-b9f6-856e514bbcb6"
          target="_blank"
          rel="noopener noreferrer">
@@ -243,37 +248,46 @@
   </footer>
 
   <style>
-    /* Fundo da página — azul Brasil profundo */
-    html {
-      background-color: #03045e;
+    /* =====================================================
+       VARIÁVEIS — Tema Claro/Escuro com Paleta Terrosa
+       ===================================================== */
+
+    /* Modo Escuro (padrão) */
+    html[data-theme="dark"] {
+      --bg-pagina:           #0F0F1A;    /* azul-preto profundo */
+      --bg-secao:            #1A1A2E;    /* azul-marinho escuro */
+      --bg-card-secondary:   #25253D;    /* azul-marinho médio */
+      --border-color:        #3A3A5C;    /* azul-roxo suave */
+      --texto-secondary:     #8888AA;    /* lavanda suave */
+      --texto-principal:     #E8E8F0;    /* quase branco */
+      --bg-header:           linear-gradient(135deg, #001A5C 0%, #002776 100%);
+      --bg-footer:           #001A5C;
+      background-color: var(--bg-pagina);
       min-height: 100%;
     }
 
-    /* =====================================================
-       VARIÁVEIS — Tema Dark único, paleta Brasil
-       Verde: #007f5f → #ffff3f   /   Azul: #03045e → #caf0f8
-       ===================================================== */
-    :root {
-      --cor-primaria:    #55a630;          /* bright-fern — botões e bordas */
-      --cor-secundaria:  #aacc00;          /* yellow-green — destaque e valores */
-      --cor-terciaria:   #007f5f;          /* jungle-teal — variante mais escura */
+    /* Modo Claro */
+    html[data-theme="light"] {
+      --bg-pagina:           #EDF2FA;    /* azul-branco suave */
+      --bg-secao:            #DCE8F5;    /* azul claro */
+      --bg-card-secondary:   #C8D9EE;    /* azul médio */
+      --border-color:        #9FB8D8;    /* azul suave */
+      --texto-secondary:     #4A6A8A;    /* azul-cinza médio */
+      --texto-principal:     #152540;    /* azul escuro */
+      --bg-header:           linear-gradient(135deg, #002776 0%, #003D99 100%);
+      --bg-footer:           #002776;
+      background-color: var(--bg-pagina);
+      min-height: 100%;
+    }
 
-      --cor-bg-secao:    rgba(252, 239, 180, 0.95);   /* amarelo Brasil ≈ #FCEFB4 — seções */
-      --cor-bg-card:     rgba(255, 255, 255, 0.68);  /* branco — cards sobre amarelo */
-
-      --cor-texto:       #caf0f8;          /* light-cyan — texto no header/footer/dark */
-      --cor-texto-light: #90e0ef;          /* frosted-blue — texto secundário dark */
-      --cor-texto-card:  #03045e;          /* navy — texto em cards sobre amarelo */
-
-      --cor-border:      rgba(85, 166, 48, 0.40);   /* bright-fern transparente */
-      --cor-sombra:      rgba(3, 4, 94, 0.70);
-
-      --cor-sucesso:     #55a630;
-      --cor-erro:        #f44336;
-
-      --radius:          10px;
-      --sombra:          0 2px 12px var(--cor-sombra);
-      --transicao:       0.3s ease;
+    /* Cores Universais (ambos os temas) */
+    html {
+      --btn-primary-bg:      #F5C400;    /* Amarelo Dourado */
+      --btn-primary-text:    #1A3A2A;    /* Verde Escuro */
+      --cor-sucesso:         #55a630;
+      --cor-erro:            #f44336;
+      --radius:              10px;
+      --transicao:           0.3s ease;
     }
 
     /* Skip link */
@@ -328,10 +342,10 @@
     ul { list-style: none; }
 
     /* =====================================================
-       CABEÇALHO — gradiente azul profundo → verde Brasil
+       CABEÇALHO — gradiente dinâmico terroso
        ===================================================== */
     header {
-      background: linear-gradient(135deg, #03045e 0%, #007f5f 100%);
+      background: var(--bg-header, linear-gradient(135deg, #001A5C 0%, #002776 100%));
       color: #ffffff;
       padding: 1.5rem 2rem;
       display: flex;
@@ -340,7 +354,8 @@
       gap: 1.5rem;
       flex-wrap: wrap;
       min-height: 80px;
-      box-shadow: 0 4px 16px rgba(3, 4, 94, 0.80);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      transition: background var(--transicao), color var(--transicao);
     }
 
     header h1 {
@@ -356,10 +371,32 @@
       gap: 1rem;
     }
 
-    /* Botão ProdeFy — amarelo-verde vibrante */
+    /* Botão Toggle Tema */
+    .btn-toggle-tema {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius);
+      transition: transform var(--transicao), background var(--transicao);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-toggle-tema:hover,
+    .btn-toggle-tema:focus {
+      background: rgba(255, 255, 255, 0.15);
+      transform: scale(1.1);
+      outline: 2px solid var(--btn-primary-bg);
+      outline-offset: 2px;
+    }
+
+    /* Botão ProdeFy — Amarelo Dourado */
     header a {
-      background-color: var(--cor-secundaria);
-      color: #1a1a00;
+      background-color: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 700;
       padding: 0.6rem 1.4rem;
       border-radius: var(--radius);
@@ -389,17 +426,17 @@
     }
 
     section {
-      background: var(--cor-bg-secao);
+      background: var(--bg-secao);
       border-radius: var(--radius);
       padding: 2rem;
-      box-shadow: var(--sombra);
-      color: #03045e;
-      transition: background var(--transicao), box-shadow var(--transicao);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+      color: var(--texto-principal);
+      transition: background var(--transicao), color var(--transicao), box-shadow var(--transicao);
     }
 
-    section h2 { color: #03045e; }
-    section h3 { color: #03045e; }
-    section a:not(.btn-resultados):not(.btn-prodefy-cartao) { color: #0077b6; }
+    section h2 { color: var(--texto-principal); }
+    section h3 { color: var(--texto-principal); }
+    section a:not(.btn-resultados):not(.btn-prodefy-cartao) { color: var(--btn-primary-bg); }
 
     /* =====================================================
        PAINEL INFORMATIVO
@@ -416,18 +453,18 @@
     }
 
     .painel-card {
-      background: var(--cor-bg-card);
+      background: var(--btn-primary-bg);
       border-radius: var(--radius);
       padding: 1.5rem;
       text-align: center;
-      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.55);
-      border: 2px solid var(--cor-primaria);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      border: 2px solid var(--border-color);
       transition: transform var(--transicao), box-shadow var(--transicao);
     }
 
     .painel-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(3, 4, 94, 0.70);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     }
 
     .painel-card span {
@@ -438,7 +475,7 @@
 
     .painel-label {
       font-size: 0.8rem;
-      color: rgba(2, 62, 138, 0.80);
+      color: var(--texto-secondary);
       text-transform: uppercase;
       letter-spacing: 0.05em;
       margin-bottom: 0.4rem;
@@ -447,16 +484,16 @@
     .painel-valor {
       font-size: 1.5rem;
       font-weight: 700;
-      color: #007f5f;
+      color: var(--btn-primary-text);
     }
 
     #estimativa-premiacao {
       margin-top: 1.5rem;
       padding: 1.5rem;
-      background: var(--cor-bg-card);
+      background: var(--btn-primary-bg);
       border-radius: var(--radius);
-      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.20);
-      border: 2px solid var(--cor-primaria);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      border: 2px solid var(--border-color);
     }
 
     #estimativa-premiacao ul {
@@ -469,7 +506,7 @@
     #estimativa-premiacao li {
       font-size: 1rem;
       font-weight: 600;
-      color: #03045e;
+      color: var(--btn-primary-text);
     }
 
     /* =====================================================
@@ -483,22 +520,22 @@
     }
 
     .cartao-regra {
-      border: 2px solid var(--cor-primaria);
+      border: 2px solid var(--border-color);
       border-radius: var(--radius);
       overflow: hidden;
       transition: transform var(--transicao), box-shadow var(--transicao);
-      background: var(--cor-bg-card);
-      box-shadow: 0 2px 10px rgba(3, 4, 94, 0.45);
+      background: var(--btn-primary-bg);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
     .cartao-regra:hover {
       transform: translateY(-4px);
-      box-shadow: 0 8px 20px rgba(3, 4, 94, 0.65);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
     }
 
     .cartao-header {
       width: 100%;
-      background: var(--cor-terciaria);
+      background: var(--btn-primary-text);
       color: #ffffff;
       border: none;
       padding: 1rem 1.2rem;
@@ -514,8 +551,9 @@
 
     .cartao-header:hover,
     .cartao-header:focus {
-      background: var(--cor-primaria);
-      outline: 3px solid var(--cor-secundaria);
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      outline: 3px solid var(--texto-secondary);
       outline-offset: -3px;
     }
 
@@ -536,15 +574,15 @@
       padding: 0 1.2rem;
       font-size: 0.9rem;
       line-height: 1.7;
-      color: var(--cor-texto);
+      color: var(--btn-primary-text);
       transition: max-height 0.3s ease, padding 0.3s ease;
-      background: rgba(3, 4, 94, 0.55);
+      background: var(--btn-primary-bg);
     }
 
     .cartao-conteudo.expandido {
       max-height: 800px;
       padding: 1.2rem;
-      border-top: 3px solid var(--cor-primaria);
+      border-top: 3px solid var(--border-color);
     }
 
     .pontuacao-tabela { margin: 0.75rem 0; }
@@ -560,7 +598,7 @@
     .pontuacao-linha:last-child { border-bottom: none; }
 
     .pts {
-      background: var(--cor-terciaria);
+      background: var(--btn-primary-text);
       color: #ffffff;
       font-weight: 700;
       font-size: 0.8rem;
@@ -573,7 +611,7 @@
 
     .regra-obs {
       margin-top: 0.75rem;
-      color: var(--cor-texto-light);
+      color: var(--texto-secondary);
       font-size: 0.85rem;
     }
 
@@ -591,8 +629,8 @@
       display: inline-block;
       margin-top: 1rem;
       padding: 0.6rem 1.2rem;
-      background: var(--cor-secundaria);
-      color: #1a1a00;
+      background: var(--btn-primary-text);
+      color: #ffffff;
       font-weight: 700;
       border-radius: var(--radius);
       transition: opacity var(--transicao);
@@ -602,7 +640,7 @@
     .btn-prodefy-cartao:hover,
     .btn-prodefy-cartao:focus {
       opacity: 0.85;
-      outline: 3px solid #48cae4;
+      outline: 3px solid var(--btn-primary-bg);
       outline-offset: 2px;
     }
 
@@ -611,11 +649,11 @@
        ===================================================== */
     #formulario-participacao p {
       margin-bottom: 0.5rem;
-      color: rgba(2, 62, 138, 0.85);
+      color: var(--texto-secondary);
     }
 
     #formulario-participacao strong {
-      color: #007f5f;
+      color: var(--btn-primary-text);
       font-size: 1.1rem;
     }
 
@@ -629,47 +667,47 @@
 
     #form-inscricao label {
       font-weight: 600;
-      color: #03045e;
+      color: var(--texto-principal);
     }
 
     #input-nome {
       padding: 0.75rem 1rem;
-      border: 2px solid rgba(2, 62, 138, 0.30);
-      background: rgba(3, 4, 94, 0.07);
-      color: #03045e;
+      border: 2px solid var(--border-color);
+      background: var(--bg-card-secondary);
+      color: var(--texto-principal);
       border-radius: var(--radius);
       font-size: 1rem;
       transition: border-color var(--transicao);
     }
 
     #input-nome::placeholder {
-      color: rgba(2, 62, 138, 0.50);
+      color: var(--texto-secondary);
       opacity: 1;
     }
 
     #input-nome:focus {
       outline: none;
-      border-color: #007f5f;
-      box-shadow: 0 0 0 3px rgba(0, 127, 95, 0.18);
+      border-color: var(--btn-primary-bg);
+      box-shadow: 0 0 0 3px rgba(245, 196, 0, 0.2);
     }
 
-    #input-nome.valido   { border-color: #007f5f; }
+    #input-nome.valido   { border-color: var(--btn-primary-text); }
     #input-nome.invalido { border-color: var(--cor-erro); }
 
     #feedback-nome {
       font-size: 0.85rem;
       min-height: 1.2em;
-      color: #03045e;
+      color: var(--texto-principal);
     }
 
-    #feedback-nome.valido   { color: #005c3f; }
-    #feedback-nome.invalido { color: #c62828; }
+    #feedback-nome.valido   { color: var(--btn-primary-text); }
+    #feedback-nome.invalido { color: var(--cor-erro); }
 
     #btn-confirmar {
       margin-top: 0.5rem;
       padding: 0.85rem 2rem;
-      background: var(--cor-primaria);
-      color: #ffffff;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       border: none;
       border-radius: var(--radius);
       font-size: 1rem;
@@ -681,17 +719,19 @@
 
     #btn-confirmar:hover:not(:disabled),
     #btn-confirmar:focus:not(:disabled) {
-      background: var(--cor-terciaria);
+      background: var(--btn-primary-text);
+      color: var(--btn-primary-bg);
       transform: translateY(-1px);
-      outline: 3px solid var(--cor-secundaria);
+      outline: 3px solid var(--texto-secondary);
       outline-offset: 2px;
     }
 
     #btn-confirmar:disabled {
-      background: rgba(3, 4, 94, 0.08);
-      color: rgba(3, 4, 94, 0.35);
+      background: var(--bg-card-secondary);
+      color: var(--texto-secondary);
       cursor: not-allowed;
       transform: none;
+      opacity: 0.5;
     }
 
     #toast-feedback {
@@ -701,6 +741,9 @@
       font-weight: 600;
       font-size: 0.95rem;
       animation: slideInUp 0.3s ease;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-left: 4px solid var(--btn-primary-text);
     }
 
     @keyframes slideInUp {
@@ -709,14 +752,14 @@
     }
 
     #toast-feedback.sucesso {
-      background: rgba(255, 255, 255, 0.90);
-      color: #005c3f;
-      border-left: 4px solid var(--cor-sucesso);
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-left: 4px solid var(--btn-primary-text);
     }
 
     #toast-feedback.erro {
-      background: rgba(255, 255, 255, 0.90);
-      color: #c62828;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       border-left: 4px solid var(--cor-erro);
     }
 
@@ -731,18 +774,18 @@
     }
 
     .stat-card {
-      background: var(--cor-bg-card);
+      background: var(--btn-primary-bg);
       border-radius: var(--radius);
       padding: 1.2rem;
       text-align: center;
-      border: 2px solid var(--cor-primaria);
+      border: 2px solid var(--border-color);
       transition: transform var(--transicao), box-shadow var(--transicao);
-      box-shadow: 0 2px 10px rgba(3, 4, 94, 0.45);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
     }
 
     .stat-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.60);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     .stat-card span {
@@ -753,7 +796,7 @@
 
     .stat-label {
       font-size: 0.75rem;
-      color: rgba(2, 62, 138, 0.80);
+      color: var(--texto-secondary);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
@@ -761,15 +804,15 @@
     .stat-valor {
       font-size: 1.2rem;
       font-weight: 700;
-      color: #007f5f;
+      color: var(--btn-primary-text);
       margin-top: 0.2rem;
     }
 
     #btn-exportar-csv {
       padding: 0.6rem 1.4rem;
       background: transparent;
-      color: #007f5f;
-      border: 2px solid #007f5f;
+      color: var(--btn-primary-text);
+      border: 2px solid var(--btn-primary-text);
       border-radius: var(--radius);
       font-size: 0.9rem;
       font-weight: 600;
@@ -780,9 +823,9 @@
 
     #btn-exportar-csv:hover,
     #btn-exportar-csv:focus {
-      background: #007f5f;
-      color: #ffffff;
-      outline: 3px solid var(--cor-secundaria);
+      background: var(--btn-primary-text);
+      color: var(--btn-primary-bg);
+      outline: 3px solid var(--texto-secondary);
       outline-offset: 2px;
     }
 
@@ -791,17 +834,17 @@
       align-items: center;
       gap: 1rem;
       padding: 1rem 1.2rem;
-      border: 2px solid var(--cor-primaria);
+      border: 2px solid var(--border-color);
       border-radius: var(--radius);
       margin-bottom: 0.75rem;
-      background: var(--cor-bg-card);
+      background: var(--btn-primary-bg);
       transition: transform var(--transicao), box-shadow var(--transicao);
-      box-shadow: 0 2px 8px rgba(3, 4, 94, 0.40);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     }
 
     .participante-card:hover {
       transform: translateX(4px);
-      box-shadow: 0 4px 14px rgba(3, 4, 94, 0.55);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     .participante-badge {
@@ -814,12 +857,12 @@
     .participante-nome {
       font-weight: 700;
       font-size: 1rem;
-      color: #03045e;
+      color: var(--btn-primary-text);
     }
 
     .participante-data {
       font-size: 0.8rem;
-      color: rgba(2, 62, 138, 0.70);
+      color: var(--texto-secondary);
     }
 
     .participante-status {
@@ -830,13 +873,15 @@
     }
 
     .participante-status.confirmado {
-      background: rgba(0, 127, 95, 0.15);
-      color: #007f5f;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border: 1px solid var(--btn-primary-text);
     }
 
     .participante-status.pendente {
-      background: rgba(2, 62, 138, 0.12);
-      color: #023e8a;
+      background: var(--bg-card-secondary);
+      color: var(--texto-secondary);
+      border: 1px solid var(--texto-secondary);
     }
 
     .participante-acoes {
@@ -860,7 +905,7 @@
     }
 
     .btn-confirmar-pagamento {
-      background: var(--cor-sucesso);
+      background: var(--btn-primary-text);
       color: #ffffff;
     }
 
@@ -876,7 +921,7 @@
 
     #lista-vazia {
       text-align: center;
-      color: rgba(2, 62, 138, 0.70);
+      color: var(--texto-secondary);
       font-style: italic;
       padding: 2rem;
     }
@@ -885,11 +930,11 @@
        RESULTADOS AO VIVO
        ===================================================== */
     #resultados-vivo {
-      border-left: 4px solid #0077b6;
+      border-left: 4px solid var(--btn-primary-bg);
     }
 
     #resultados-vivo p {
-      color: rgba(2, 62, 138, 0.85);
+      color: var(--texto-secondary);
       margin-bottom: 1.5rem;
       max-width: 600px;
     }
@@ -899,8 +944,8 @@
       align-items: center;
       gap: 0.5rem;
       padding: 0.9rem 2rem;
-      background: var(--cor-primaria);
-      color: #ffffff;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
       font-weight: 700;
       font-size: 1rem;
       border-radius: var(--radius);
@@ -910,9 +955,10 @@
 
     .btn-resultados:hover,
     .btn-resultados:focus {
-      background: var(--cor-terciaria);
+      background: var(--btn-primary-text);
+      color: var(--btn-primary-bg);
       transform: translateY(-2px);
-      outline: 3px solid var(--cor-secundaria);
+      outline: 3px solid var(--texto-secondary);
       outline-offset: 2px;
     }
 
@@ -920,7 +966,7 @@
        RODAPÉ
        ===================================================== */
     footer {
-      background: #03045e;
+      background: var(--bg-footer, #001A5C);
       color: #ffffff;
       padding: 1.5rem 2rem;
       text-align: center;
@@ -928,18 +974,19 @@
       flex-direction: column;
       align-items: center;
       gap: 1rem;
-      box-shadow: 0 -4px 16px rgba(3, 4, 94, 0.80);
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.2);
+      transition: background var(--transicao), color var(--transicao);
     }
 
     footer p {
       font-size: 0.85rem;
-      color: rgba(202, 240, 248, 0.75);
+      color: rgba(255, 255, 255, 0.75);
     }
 
     #btn-area-admin {
       background: transparent;
-      color: rgba(202, 240, 248, 0.45);
-      border: 1px solid rgba(202, 240, 248, 0.25);
+      color: rgba(255, 255, 255, 0.50);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       padding: 0.4rem 1rem;
       border-radius: var(--radius);
       font-size: 0.8rem;
@@ -949,33 +996,33 @@
 
     #btn-area-admin:hover,
     #btn-area-admin:focus {
-      color: #caf0f8;
-      border-color: rgba(202, 240, 248, 0.70);
-      outline: 2px solid var(--cor-secundaria);
+      color: #ffffff;
+      border-color: rgba(255, 255, 255, 0.70);
+      outline: 2px solid var(--btn-primary-bg);
       outline-offset: 2px;
     }
 
     #painel-admin {
-      background: rgba(2, 62, 138, 0.95);
-      color: var(--cor-texto);
+      background: var(--bg-card-secondary);
+      color: var(--texto-principal);
       border-radius: var(--radius);
       padding: 2rem;
       width: 100%;
       max-width: 700px;
-      box-shadow: 0 4px 20px rgba(3, 4, 94, 0.80);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       text-align: left;
-      border: 2px solid var(--cor-primaria);
+      border: 2px solid var(--border-color);
     }
 
     #painel-admin h2 {
       margin-bottom: 1.2rem;
-      color: var(--cor-secundaria);
+      color: var(--btn-primary-bg);
     }
 
     #painel-admin label,
     #painel-admin p,
     #painel-admin .campo-regra-nome {
-      color: var(--cor-texto);
+      color: var(--texto-principal);
     }
 
     /* Formulário de login */
@@ -989,14 +1036,14 @@
     #form-admin-login label {
       font-weight: 600;
       font-size: 0.9rem;
-      color: var(--cor-texto);
+      color: var(--texto-principal);
     }
 
     #input-senha-admin {
       padding: 0.7rem 1rem;
-      border: 2px solid var(--cor-border);
-      background: rgba(3, 4, 94, 0.65);
-      color: var(--cor-texto);
+      border: 2px solid var(--border-color);
+      background: var(--bg-pagina);
+      color: var(--texto-principal);
       border-radius: var(--radius);
       font-size: 1rem;
       transition: border-color var(--transicao);
@@ -1291,6 +1338,9 @@
     /* Estado de autenticação — Fase 8 alterna para true após login */
     let isAdminAuthenticated = false;
 
+    /* Cache local dos participantes — atualizado pelo listener Firebase em tempo real */
+    var participantesCache = [];
+
     /* Arredondado com toFixed para evitar ruído de ponto flutuante
        (ex: 100/104 = 0.9615..., exibimos apenas R$ 0,96) */
     const VALOR_POR_JOGO = parseFloat((VALOR_BOLAO / TOTAL_JOGOS).toFixed(2));
@@ -1334,15 +1384,11 @@
 
 
     /* =====================================================
-       LOCALSTORAGE — leitura/escrita centralizada
+       PARTICIPANTES — leitura via cache (Firebase onValue)
        ===================================================== */
 
     function carregarParticipantes() {
-      return JSON.parse(localStorage.getItem('bolao_participantes') || '[]');
-    }
-
-    function salvarParticipantes(lista) {
-      localStorage.setItem('bolao_participantes', JSON.stringify(lista));
+      return participantesCache;
     }
 
 
@@ -1587,7 +1633,7 @@
       }
     }
 
-    /* Capitaliza cada palavra e salva o participante no localStorage */
+    /* Capitaliza cada palavra e salva o participante no Firebase */
     function adicionarParticipante(nome) {
       const nomeFormatado = nome
         .trim()
@@ -1595,20 +1641,16 @@
         .replace(/\b\w/g, function (c) { return c.toUpperCase(); });
 
       const participante = {
-        id:                       gerarId(),
         nome:                     nomeFormatado,
         dataInscricao:            new Date().toISOString(),
         pagamentoConfirmado:      false,
         dataConfirmacaoPagamento: null
       };
 
-      const lista = carregarParticipantes();
-      lista.push(participante);
-      salvarParticipantes(lista);
-
-      /* Atualiza painel informativo imediatamente (total arrecadado / premiação) */
-      renderizarPainelInformativo();
-      renderizarListaParticipantes();
+      /* Firebase gera o id automaticamente (push key) */
+      var refParticipantes = window.firebaseRef(window.firebaseDB, 'participantes');
+      window.firebasePush(refParticipantes, participante);
+      /* onValue listener atualiza a UI automaticamente após o push */
     }
 
     /* Exibe toast por 5 segundos e o remove — feedback não-intrusivo */
@@ -1907,47 +1949,44 @@
     }
 
     function confirmarPagamento(id) {
-      const lista        = carregarParticipantes();
-      const participante = lista.find(function (p) { return p.id === id; });
+      const participante = participantesCache.find(function (p) { return p.id === id; });
       if (!participante) return;
 
-      participante.pagamentoConfirmado      = true;
-      participante.dataConfirmacaoPagamento = new Date().toISOString();
-      salvarParticipantes(lista);
-      renderizarPainelInformativo();
-      renderizarListaParticipantes();
-      mostrarToast('✓ Pagamento de ' + participante.nome + ' confirmado.', 'sucesso');
+      var refParticipante = window.firebaseRef(window.firebaseDB, 'participantes/' + id);
+      window.firebaseUpdate(refParticipante, {
+        pagamentoConfirmado:      true,
+        dataConfirmacaoPagamento: new Date().toISOString()
+      }).then(function () {
+        mostrarToast('✓ Pagamento de ' + participante.nome + ' confirmado.', 'sucesso');
+      });
     }
 
     function removerParticipante(id) {
-      const lista        = carregarParticipantes();
-      const participante = lista.find(function (p) { return p.id === id; });
+      const participante = participantesCache.find(function (p) { return p.id === id; });
       if (!participante) return;
 
       if (!confirm('Remover "' + participante.nome + '"? Esta ação não pode ser desfeita.')) return;
 
-      salvarParticipantes(lista.filter(function (p) { return p.id !== id; }));
-      renderizarPainelInformativo();
-      renderizarListaParticipantes();
-      mostrarToast(participante.nome + ' foi removido.', 'erro');
+      var refParticipante = window.firebaseRef(window.firebaseDB, 'participantes/' + id);
+      window.firebaseRemove(refParticipante).then(function () {
+        mostrarToast(participante.nome + ' foi removido.', 'erro');
+      });
     }
 
     function limparTudo() {
-      const lista = carregarParticipantes();
-
-      if (lista.length === 0) {
+      if (participantesCache.length === 0) {
         mostrarToast('A lista já está vazia.', 'erro');
         return;
       }
 
       /* Confirmação dupla — ação irreversível conforme PRD */
-      if (!confirm('Limpar TODOS os ' + lista.length + ' participante(s) cadastrados?')) return;
+      if (!confirm('Limpar TODOS os ' + participantesCache.length + ' participante(s) cadastrados?')) return;
       if (!confirm('Esta ação é irreversível. Confirma a exclusão completa da lista?')) return;
 
-      salvarParticipantes([]);
-      renderizarPainelInformativo();
-      renderizarListaParticipantes();
-      mostrarToast('Lista de participantes limpa.', 'erro');
+      var refParticipantes = window.firebaseRef(window.firebaseDB, 'participantes');
+      window.firebaseSet(refParticipantes, null).then(function () {
+        mostrarToast('Lista de participantes limpa.', 'erro');
+      });
     }
 
 
@@ -2055,10 +2094,94 @@
 
 
     /* =====================================================
+       GERENCIAMENTO DE TEMA
+       ===================================================== */
+
+    /* Carregar tema salvo ou usar padrão (dark) */
+    function inicializarTema() {
+      const temaSalvo = localStorage.getItem('bolao_tema') || 'light';
+      aplicarTema(temaSalvo);
+    }
+
+    /* Aplicar tema ao elemento html */
+    function aplicarTema(tema) {
+      document.documentElement.setAttribute('data-theme', tema);
+      atualizarIconeTema(tema);
+    }
+
+    /* Atualizar ícone do botão toggle */
+    function atualizarIconeTema(tema) {
+      const btn = document.getElementById('toggle-tema');
+      if (tema === 'dark') {
+        btn.textContent = '☀️';
+        btn.setAttribute('aria-label', 'Alternar para modo claro');
+      } else {
+        btn.textContent = '🌙';
+        btn.setAttribute('aria-label', 'Alternar para modo escuro');
+      }
+    }
+
+    /* Toggle entre dark e light */
+    function toggleTema() {
+      const temaCurrent = document.documentElement.getAttribute('data-theme');
+      const temaNovo = temaCurrent === 'dark' ? 'light' : 'dark';
+
+      localStorage.setItem('bolao_tema', temaNovo);
+      aplicarTema(temaNovo);
+    }
+
+    /* =====================================================
+       FIREBASE — listener em tempo real para participantes
+       ===================================================== */
+
+    function inicializarFirebase() {
+      /* Previne dupla inicialização caso evento e fallback disparem juntos */
+      if (window._firebaseListenerAtivo) return;
+      window._firebaseListenerAtivo = true;
+
+      var refParticipantes = window.firebaseRef(window.firebaseDB, 'participantes');
+      window.firebaseOnValue(refParticipantes, function (snapshot) {
+        var dados = snapshot.val();
+        if (dados) {
+          /* Converte objeto Firebase {key: {campos}} → array com id = push key */
+          participantesCache = Object.entries(dados).map(function (entrada) {
+            var chave = entrada[0];
+            var p     = entrada[1];
+            return {
+              id:                       chave,
+              nome:                     p.nome,
+              dataInscricao:            p.dataInscricao,
+              pagamentoConfirmado:      p.pagamentoConfirmado      || false,
+              dataConfirmacaoPagamento: p.dataConfirmacaoPagamento || null
+            };
+          });
+        } else {
+          participantesCache = [];
+        }
+        renderizarPainelInformativo();
+        renderizarListaParticipantes();
+      });
+    }
+
+
+    /* =====================================================
        INICIALIZAÇÃO — ponto de entrada da aplicação
        ===================================================== */
 
+    /* Registrado fora do DOMContentLoaded — módulo ES dispara firebase-ready
+       antes do DOMContentLoaded em alguns navegadores (comportamento defer) */
+    window.addEventListener('firebase-ready', inicializarFirebase);
+
     document.addEventListener('DOMContentLoaded', function () {
+      /* Fallback: Firebase já pronto antes do DOMContentLoaded disparar */
+      if (window.firebaseDB) { inicializarFirebase(); }
+
+      /* Aplicar tema salvo ou padrão */
+      inicializarTema();
+
+      /* Registrar listener do botão toggle tema */
+      document.getElementById('toggle-tema').addEventListener('click', toggleTema);
+
       renderizarPainelInformativo();
 
       const regras = carregarRegras();
@@ -2070,6 +2193,37 @@
       inicializarAdmin();
       renderizarListaParticipantes();
     });
+  </script>
+
+  <!-- ===== FIREBASE SDK ===== -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+    import { getDatabase, ref, push, onValue, update, remove, set } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyD0j2fXjKORsOPqL5wUwyepvjh1RhzjzWQ",
+      authDomain: "bolao-copa-2026-c7b68.firebaseapp.com",
+      databaseURL: "https://bolao-copa-2026-c7b68-default-rtdb.firebaseio.com",
+      projectId: "bolao-copa-2026-c7b68",
+      storageBucket: "bolao-copa-2026-c7b68.firebasestorage.app",
+      messagingSenderId: "796064788968",
+      appId: "1:796064788968:web:e4e282869945190b5c745d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    /* Expõe globalmente para uso nas fases 15 e 16 */
+    window.firebaseDB = database;
+    window.firebaseRef = ref;
+    window.firebasePush = push;
+    window.firebaseOnValue = onValue;
+    window.firebaseUpdate = update;
+    window.firebaseRemove = remove;
+    window.firebaseSet = set;
+
+    /* Sinaliza que o Firebase está pronto */
+    window.dispatchEvent(new Event('firebase-ready'));
   </script>
 
 </body>
