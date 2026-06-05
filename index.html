@@ -15,20 +15,103 @@
   <header>
     <h1>🇧🇷 Bolão da Copa 2026 | Biancade Engenharia</h1>
     <div class="header-acoes">
+      <span class="header-pix">🔑 CHAVE PIX (11) 94881-1291</span>
+      <a href="https://ge.globo.com/futebol/copa-do-mundo/"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-header-link">
+        Ver Resultado ao Vivo →
+      </a>
+      <a href="https://prodefy.co/app/group/dd0d19f3-b37d-4d1d-b9f6-856e514bbcb6"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="btn-header-link">
+        Ir para ProdeFy
+      </a>
       <button id="toggle-tema"
               class="btn-toggle-tema"
               aria-label="Alternar tema">
-        ☀️
+        🌙
       </button>
-      <a href="https://prodefy.co/app/group/dd0d19f3-b37d-4d1d-b9f6-856e514bbcb6"
-         target="_blank"
-         rel="noopener noreferrer">
-        Ir para ProdeFy
-      </a>
     </div>
   </header>
 
   <main id="conteudo-principal" tabindex="-1">
+
+    <!-- ===== LISTA DE PARTICIPANTES ===== -->
+    <section id="lista-participantes" aria-label="Lista de participantes">
+      <h2>Participantes</h2>
+
+      <!-- Painel de estatísticas -->
+      <div id="painel-estatisticas" aria-label="Estatísticas do bolão">
+        <div class="stat-card">
+          <span aria-hidden="true">👥</span>
+          <p class="stat-label">Cadastrados</p>
+          <p class="stat-valor" id="stat-total-cadastrados">0</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">✅</span>
+          <p class="stat-label">Pagamentos Confirmados</p>
+          <p class="stat-valor" id="stat-total-confirmados">0</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">💵</span>
+          <p class="stat-label">Total Arrecadado (est.)</p>
+          <p class="stat-valor" id="stat-arrecadado">R$ 0,00</p>
+        </div>
+        <div class="stat-card">
+          <span aria-hidden="true">🎯</span>
+          <p class="stat-label">Total de Apostas (est.)</p>
+          <p class="stat-valor" id="stat-apostas">0</p>
+        </div>
+      </div>
+
+      <!-- Botão exportar CSV -->
+      <button id="btn-exportar-csv" type="button">
+        Exportar CSV
+      </button>
+
+      <!-- Lista de participantes renderizada por JS -->
+      <ul id="lista-participantes-items" aria-label="Lista de participantes inscritos">
+        <!-- Itens gerados por script.js -->
+      </ul>
+
+      <!-- Estado vazio — hidden no HTML, JS remove/adiciona conforme a lista -->
+      <p id="lista-vazia" role="status" hidden>
+        Nenhum participante cadastrado ainda. Seja o primeiro!
+      </p>
+    </section>
+
+    <!-- ===== FORMULÁRIO DE PARTICIPAÇÃO ===== -->
+    <section id="formulario-participacao" aria-label="Formulário de participação">
+      <h2>Participar do Bolão</h2>
+
+      <p>Valor da participação: <strong id="valor-participacao">R$ 100,00</strong></p>
+      <p>Você terá direito a apostar em todos os <strong id="total-jogos-form">104</strong> jogos da Copa.</p>
+
+      <form id="form-inscricao" novalidate>
+        <label for="input-nome">Seu nome completo</label>
+        <input
+          type="text"
+          id="input-nome"
+          name="nome"
+          placeholder="Digite seu nome..."
+          autocomplete="name"
+          minlength="3"
+          maxlength="50"
+          aria-describedby="feedback-nome"
+          required
+        >
+        <p id="feedback-nome" role="alert" aria-live="polite"></p>
+
+        <button type="submit" id="btn-confirmar" disabled>
+          Confirmar Participação
+        </button>
+      </form>
+
+      <!-- Toast de sucesso/erro, oculto por padrão -->
+      <div id="toast-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+    </section>
 
     <!-- ===== PAINEL INFORMATIVO ===== -->
     <section id="painel-informativo" aria-label="Painel informativo do bolão">
@@ -141,94 +224,6 @@
         </article>
 
       </div>
-    </section>
-
-    <!-- ===== FORMULÁRIO DE PARTICIPAÇÃO ===== -->
-    <section id="formulario-participacao" aria-label="Formulário de participação">
-      <h2>Participar do Bolão</h2>
-
-      <p>Valor da participação: <strong id="valor-participacao">R$ 100,00</strong></p>
-      <p>Você terá direito a apostar em todos os <strong id="total-jogos-form">104</strong> jogos da Copa.</p>
-
-      <form id="form-inscricao" novalidate>
-        <label for="input-nome">Seu nome completo</label>
-        <input
-          type="text"
-          id="input-nome"
-          name="nome"
-          placeholder="Digite seu nome..."
-          autocomplete="name"
-          minlength="3"
-          maxlength="50"
-          aria-describedby="feedback-nome"
-          required
-        >
-        <p id="feedback-nome" role="alert" aria-live="polite"></p>
-
-        <button type="submit" id="btn-confirmar" disabled>
-          Confirmar Participação
-        </button>
-      </form>
-
-      <!-- Toast de sucesso/erro, oculto por padrão -->
-      <div id="toast-feedback" role="status" aria-live="polite" aria-atomic="true" hidden></div>
-    </section>
-
-    <!-- ===== LISTA DE PARTICIPANTES ===== -->
-    <section id="lista-participantes" aria-label="Lista de participantes">
-      <h2>Participantes</h2>
-
-      <!-- Painel de estatísticas -->
-      <div id="painel-estatisticas" aria-label="Estatísticas do bolão">
-        <div class="stat-card">
-          <span aria-hidden="true">👥</span>
-          <p class="stat-label">Cadastrados</p>
-          <p class="stat-valor" id="stat-total-cadastrados">0</p>
-        </div>
-        <div class="stat-card">
-          <span aria-hidden="true">✅</span>
-          <p class="stat-label">Pagamentos Confirmados</p>
-          <p class="stat-valor" id="stat-total-confirmados">0</p>
-        </div>
-        <div class="stat-card">
-          <span aria-hidden="true">💵</span>
-          <p class="stat-label">Total Arrecadado (est.)</p>
-          <p class="stat-valor" id="stat-arrecadado">R$ 0,00</p>
-        </div>
-        <div class="stat-card">
-          <span aria-hidden="true">🎯</span>
-          <p class="stat-label">Total de Apostas (est.)</p>
-          <p class="stat-valor" id="stat-apostas">0</p>
-        </div>
-      </div>
-
-      <!-- Botão exportar CSV -->
-      <button id="btn-exportar-csv" type="button">
-        Exportar CSV
-      </button>
-
-      <!-- Lista de participantes renderizada por JS -->
-      <ul id="lista-participantes-items" aria-label="Lista de participantes inscritos">
-        <!-- Itens gerados por script.js -->
-      </ul>
-
-      <!-- Estado vazio — hidden no HTML, JS remove/adiciona conforme a lista -->
-      <p id="lista-vazia" role="status" hidden>
-        Nenhum participante cadastrado ainda. Seja o primeiro!
-      </p>
-    </section>
-
-    <!-- ===== RESULTADOS AO VIVO ===== -->
-    <section id="resultados-vivo" aria-label="Resultados em tempo real">
-      <h2>Resultados em Tempo Real</h2>
-      <p>Acompanhe todos os resultados dos jogos da Copa 2026 ao vivo — placar, estatísticas e classificação atualizados em tempo real.</p>
-      <a href="https://ge.globo.com/futebol/copa-do-mundo/"
-         target="_blank"
-         rel="noopener noreferrer"
-         class="btn-resultados"
-         aria-label="Ver resultados ao vivo no GE Globo (abre em nova aba)">
-        Ver Resultados ao Vivo →
-      </a>
     </section>
 
   </main>
@@ -393,7 +388,18 @@
       outline-offset: 2px;
     }
 
-    /* Botão ProdeFy — Amarelo Dourado */
+    /* Chave PIX no cabeçalho */
+    .header-pix {
+      color: #ffffff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0.95;
+      letter-spacing: 0.03em;
+    }
+
+    /* Botões de link no cabeçalho — Amarelo Dourado */
+    .btn-header-link,
     header a {
       background-color: var(--btn-primary-bg);
       color: var(--btn-primary-text);
@@ -1603,10 +1609,7 @@
         input.value = '';
         btn.disabled = true;
         atualizarFeedbackValidacao({ valido: false, erro: '' }, '');
-        mostrarToast(
-          '✓ Seu nome foi registrado! Entre em contato com o organizador para confirmar o pagamento.',
-          'sucesso'
-        );
+        mostrarToast('✓ Seu nome foi registrado!', 'sucesso');
       });
     }
 
